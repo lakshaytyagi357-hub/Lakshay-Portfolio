@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>LAKSHAY TYAGI | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&amp;family=Inter:wght@400;500&amp;family=Space+Grotesk:wght@500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e2e1;
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        .glass-panel {
+            background: rgba(18, 18, 18, 0.4);
+            backdrop-filter: blur(30px);
+            border-top: 1px solid rgba(165, 231, 255, 0.2);
+            border-left: 1px solid rgba(165, 231, 255, 0.1);
+        }
+
+        .glow-sm {
+            box-shadow: 0 0 20px rgba(71, 214, 255, 0.15);
+        }
+
+        .glow-md {
+            box-shadow: 0 0 40px rgba(237, 177, 255, 0.2);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 12px rgba(165, 231, 255, 0.5);
+        }
+
+        .bg-mesh {
+            background-image: radial-gradient(at 0% 0%, rgba(110, 32, 140, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 210, 255, 0.15) 0px, transparent 50%);
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .rotate-x-12 {
+            transform: rotateX(12deg);
+        }
+
+
+        /* ===== 3D ANIMATION UPGRADE ===== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            background:
+                linear-gradient(rgba(165, 231, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(237, 177, 255, 0.035) 1px, transparent 1px);
+            background-size: 64px 64px;
+            transform: perspective(900px) rotateX(62deg) translateY(-34%);
+            transform-origin: top;
+            animation: gridMove 16s linear infinite;
+            opacity: 0.55;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 320px;
+            height: 320px;
+            left: var(--cursor-x, 50%);
+            top: var(--cursor-y, 50%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 2;
+            background: radial-gradient(circle, rgba(71, 214, 255, 0.16), transparent 60%);
+            filter: blur(12px);
+            opacity: 0.65;
+        }
+
+        main,
+        header,
+        footer {
+            position: relative;
+            z-index: 3;
+        }
+
+        @keyframes gridMove {
+            from {
+                background-position: 0 0, 0 0;
+            }
+
+            to {
+                background-position: 0 64px, 64px 0;
+            }
+        }
+
+        @keyframes float3d {
+
+            0%,
+            100% {
+                transform: translate3d(0, 0, 0) rotateX(8deg) rotateY(-12deg) rotateZ(-6deg);
+            }
+
+            50% {
+                transform: translate3d(0, -34px, 34px) rotateX(14deg) rotateY(10deg) rotateZ(5deg);
+            }
+        }
+
+        @keyframes float3dAlt {
+
+            0%,
+            100% {
+                transform: translate3d(0, 0, 0) rotateX(-8deg) rotateY(12deg) rotateZ(6deg);
+            }
+
+            50% {
+                transform: translate3d(0, 28px, 42px) rotateX(10deg) rotateY(-10deg) rotateZ(-4deg);
+            }
+        }
+
+        @keyframes pulseRing {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1) rotateX(70deg);
+                opacity: 0.28;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.12) rotateX(70deg);
+                opacity: 0.55;
+            }
+        }
+
+        .hero-orbit {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: min(72vw, 760px);
+            height: min(72vw, 760px);
+            transform: translate(-50%, -50%) rotateX(70deg);
+            border: 1px solid rgba(165, 231, 255, 0.18);
+            border-radius: 9999px;
+            pointer-events: none;
+            box-shadow: 0 0 90px rgba(71, 214, 255, 0.08), inset 0 0 55px rgba(237, 177, 255, 0.06);
+            animation: pulseRing 5s ease-in-out infinite;
+        }
+
+        .hero-orbit::before,
+        .hero-orbit::after {
+            content: "";
+            position: absolute;
+            inset: 12%;
+            border-radius: inherit;
+            border: 1px dashed rgba(237, 177, 255, 0.18);
+        }
+
+        .hero-orbit::after {
+            inset: 27%;
+            border-color: rgba(255, 185, 90, 0.16);
+        }
+
+        section:first-of-type h1 {
+            animation: titleLift 1.1s ease both;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes titleLift {
+            from {
+                opacity: 0;
+                transform: translateY(34px) rotateX(18deg);
+                filter: blur(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+                filter: blur(0);
+            }
+        }
+
+        section:first-of-type>div:last-child {
+            perspective: 1200px;
+            transform-style: preserve-3d;
+        }
+
+        section:first-of-type>div:last-child>div:nth-child(1) {
+            animation: float3d 6.5s ease-in-out infinite;
+        }
+
+        section:first-of-type>div:last-child>div:nth-child(2) {
+            animation: float3dAlt 7.5s ease-in-out infinite;
+            animation-delay: -1.5s;
+        }
+
+        section:first-of-type>div:last-child>div:nth-child(3) {
+            animation: float3d 8s ease-in-out infinite;
+            animation-delay: -2.4s;
+        }
+
+        section:first-of-type>div:last-child img,
+        #work .group img,
+        #about img {
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .tilt-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+        }
+
+        .tilt-3d:hover {
+            box-shadow: 0 30px 90px rgba(71, 214, 255, 0.18), 0 0 35px rgba(237, 177, 255, 0.18);
+            border-color: rgba(165, 231, 255, 0.35);
+        }
+
+        .reveal-3d {
+            opacity: 0;
+            transform: translateY(70px) rotateX(18deg) scale(0.96);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+            transform-origin: center top;
+        }
+
+        .reveal-3d.is-visible {
+            opacity: 1;
+            transform: translateY(0) rotateX(0) scale(1);
+        }
+
+        #work .group {
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        #work .group:hover {
+            transform: translateY(-14px) rotateX(5deg) rotateY(-5deg);
+            box-shadow: 0 35px 110px rgba(0, 210, 255, 0.16);
+        }
+
+        #work .group:hover img {
+            transform: scale(1.12) translateZ(35px);
+        }
+
+
+
+        /* ===== EXTRA HEAVY 3D MOTION PASS ===== */
+        .scene-3d {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            perspective: 1400px;
+            transform-style: preserve-3d;
+            z-index: 2;
+        }
+
+        .cube-3d {
+            --size: 86px;
+            position: absolute;
+            width: var(--size);
+            height: var(--size);
+            transform-style: preserve-3d;
+            animation: cubeSpin 10s linear infinite, cubeFloat 5.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 28px rgba(71, 214, 255, .30));
+        }
+
+        .cube-3d span {
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(165, 231, 255, .34);
+            background: linear-gradient(135deg, rgba(71, 214, 255, .12), rgba(237, 177, 255, .08));
+            backdrop-filter: blur(10px);
+            box-shadow: inset 0 0 32px rgba(255, 255, 255, .05), 0 0 25px rgba(71, 214, 255, .12);
+        }
+
+        .cube-3d span:nth-child(1) {
+            transform: translateZ(calc(var(--size) / 2));
+        }
+
+        .cube-3d span:nth-child(2) {
+            transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
+        }
+
+        .cube-3d span:nth-child(3) {
+            transform: rotateY(180deg) translateZ(calc(var(--size) / 2));
+        }
+
+        .cube-3d span:nth-child(4) {
+            transform: rotateY(-90deg) translateZ(calc(var(--size) / 2));
+        }
+
+        .cube-3d span:nth-child(5) {
+            transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
+        }
+
+        .cube-3d span:nth-child(6) {
+            transform: rotateX(-90deg) translateZ(calc(var(--size) / 2));
+        }
+
+        .cube-one {
+            left: 9%;
+            top: 22%;
+            --size: 78px;
+            animation-delay: -1s;
+        }
+
+        .cube-two {
+            right: 12%;
+            top: 26%;
+            --size: 110px;
+            animation-duration: 14s, 6.5s;
+            filter: drop-shadow(0 0 36px rgba(237, 177, 255, .28));
+        }
+
+        .cube-three {
+            left: 18%;
+            bottom: 16%;
+            --size: 58px;
+            animation-duration: 8s, 4.8s;
+        }
+
+        @keyframes cubeSpin {
+            from {
+                transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateX(360deg) rotateY(360deg) rotateZ(180deg);
+            }
+        }
+
+        @keyframes cubeFloat {
+
+            0%,
+            100% {
+                margin-top: 0;
+            }
+
+            50% {
+                margin-top: -44px;
+            }
+        }
+
+        .orb-3d {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            background: radial-gradient(circle at 30% 30%, #ffffff, #a5e7ff 35%, rgba(0, 210, 255, .15) 70%);
+            box-shadow: 0 0 34px rgba(71, 214, 255, .85), 0 0 80px rgba(237, 177, 255, .25);
+            offset-path: ellipse(360px 160px at 50% 50%);
+            animation: orbitBall 7s linear infinite;
+            left: calc(50% - 9px);
+            top: calc(50% - 9px);
+        }
+
+        .orb-3d:nth-child(5) {
+            width: 12px;
+            height: 12px;
+            animation-duration: 11s;
+            animation-delay: -3s;
+            offset-path: ellipse(520px 220px at 50% 50%);
+            background: radial-gradient(circle at 30% 30%, #ffffff, #edb1ff 38%, rgba(237, 177, 255, .12) 72%);
+        }
+
+        @keyframes orbitBall {
+            from {
+                offset-distance: 0%;
+                transform: rotateX(68deg) translateZ(0);
+            }
+
+            to {
+                offset-distance: 100%;
+                transform: rotateX(68deg) translateZ(0);
+            }
+        }
+
+        .hero-hologram {
+            position: absolute;
+            right: min(7vw, 90px);
+            top: 20%;
+            width: 260px;
+            height: 360px;
+            border-radius: 28px;
+            background:
+                linear-gradient(145deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .02)),
+                radial-gradient(circle at 30% 20%, rgba(165, 231, 255, .24), transparent 35%),
+                radial-gradient(circle at 80% 80%, rgba(237, 177, 255, .20), transparent 45%);
+            border: 1px solid rgba(255, 255, 255, .18);
+            box-shadow: 0 40px 120px rgba(0, 210, 255, .12), inset 0 0 60px rgba(255, 255, 255, .04);
+            transform-style: preserve-3d;
+            animation: hologramFloat 6s ease-in-out infinite;
+            opacity: .72;
+        }
+
+        .hero-hologram::before {
+            content: "LT";
+            position: absolute;
+            inset: 26px;
+            border-radius: 22px;
+            border: 1px solid rgba(165, 231, 255, .18);
+            display: grid;
+            place-items: center;
+            font-family: Montserrat, sans-serif;
+            font-weight: 900;
+            font-size: 76px;
+            color: rgba(165, 231, 255, .32);
+            text-shadow: 0 0 22px rgba(71, 214, 255, .7);
+            transform: translateZ(45px);
+        }
+
+        .hero-hologram::after {
+            content: "FIGMA • WEB • BRAND";
+            position: absolute;
+            left: 28px;
+            right: 28px;
+            bottom: 34px;
+            font-family: Space Grotesk, sans-serif;
+            letter-spacing: .18em;
+            font-size: 11px;
+            color: rgba(229, 226, 225, .72);
+            transform: translateZ(60px);
+        }
+
+        @keyframes hologramFloat {
+
+            0%,
+            100% {
+                transform: rotateY(-24deg) rotateX(8deg) translate3d(0, 0, 0);
+            }
+
+            50% {
+                transform: rotateY(24deg) rotateX(-4deg) translate3d(0, -34px, 80px);
+            }
+        }
+
+        .magnetic-btn {
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .magnetic-btn::after {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .32), transparent);
+            transform: translateX(-120%);
+            transition: transform .7s ease;
+        }
+
+        .magnetic-btn:hover::after {
+            transform: translateX(120%);
+        }
+
+        #expertise .glass-panel::after {
+            content: "";
+            position: absolute;
+            inset: 12px;
+            border-radius: inherit;
+            border: 1px solid rgba(255, 255, 255, .06);
+            transform: translateZ(28px);
+            pointer-events: none;
+        }
+
+        #expertise .glass-panel .material-symbols-outlined {
+            display: inline-block;
+            animation: iconPop3d 3s ease-in-out infinite;
+        }
+
+        @keyframes iconPop3d {
+
+            0%,
+            100% {
+                transform: translateZ(0) rotateY(0deg) scale(1);
+            }
+
+            50% {
+                transform: translateZ(34px) rotateY(18deg) scale(1.12);
+            }
+        }
+
+        .portfolio-depth-label {
+            transform: translateZ(45px);
+            text-shadow: 0 12px 26px rgba(0, 0, 0, .75);
+        }
+
+
+
+        /* ===== FULL PAGE 3D SECTION ANIMATIONS ===== */
+        .section-3d-scene {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            perspective: 1200px;
+            transform-style: preserve-3d;
+            z-index: 0;
+        }
+
+        #expertise,
+        #work,
+        #about,
+        #contact,
+        footer {
+            position: relative;
+            isolation: isolate;
+        }
+
+        #expertise>*:not(.section-3d-scene),
+        #work>*:not(.section-3d-scene),
+        #about>*:not(.section-3d-scene),
+        #contact>*:not(.section-3d-scene),
+        footer>*:not(.section-3d-scene) {
+            position: relative;
+            z-index: 2;
+        }
+
+        .mini-cube-3d {
+            --size: 46px;
+            position: absolute;
+            width: var(--size);
+            height: var(--size);
+            transform-style: preserve-3d;
+            animation: miniCubeSpin 9s linear infinite, sectionFloat 5s ease-in-out infinite;
+            opacity: .65;
+            filter: drop-shadow(0 0 20px rgba(71, 214, 255, .22));
+        }
+
+        .mini-cube-3d span {
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(165, 231, 255, .24);
+            background: linear-gradient(135deg, rgba(71, 214, 255, .11), rgba(237, 177, 255, .07));
+            box-shadow: inset 0 0 18px rgba(255, 255, 255, .04);
+        }
+
+        .mini-cube-3d span:nth-child(1) {
+            transform: translateZ(calc(var(--size) / 2));
+        }
+
+        .mini-cube-3d span:nth-child(2) {
+            transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
+        }
+
+        .mini-cube-3d span:nth-child(3) {
+            transform: rotateY(180deg) translateZ(calc(var(--size) / 2));
+        }
+
+        .mini-cube-3d span:nth-child(4) {
+            transform: rotateY(-90deg) translateZ(calc(var(--size) / 2));
+        }
+
+        .mini-cube-3d span:nth-child(5) {
+            transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
+        }
+
+        .mini-cube-3d span:nth-child(6) {
+            transform: rotateX(-90deg) translateZ(calc(var(--size) / 2));
+        }
+
+        @keyframes miniCubeSpin {
+            from {
+                transform: rotateX(0) rotateY(0) rotateZ(0);
+            }
+
+            to {
+                transform: rotateX(360deg) rotateY(-360deg) rotateZ(220deg);
+            }
+        }
+
+        @keyframes sectionFloat {
+
+            0%,
+            100% {
+                margin-top: 0;
+            }
+
+            50% {
+                margin-top: -26px;
+            }
+        }
+
+        .wire-sphere-3d {
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            border: 1px solid rgba(237, 177, 255, .20);
+            box-shadow: inset 0 0 40px rgba(71, 214, 255, .06), 0 0 55px rgba(237, 177, 255, .08);
+            transform-style: preserve-3d;
+            animation: sphereTurn 11s linear infinite;
+            opacity: .55;
+        }
+
+        .wire-sphere-3d::before,
+        .wire-sphere-3d::after {
+            content: "";
+            position: absolute;
+            inset: 18px;
+            border-radius: inherit;
+            border: 1px dashed rgba(165, 231, 255, .18);
+            transform: rotateX(72deg);
+        }
+
+        .wire-sphere-3d::after {
+            transform: rotateY(72deg);
+        }
+
+        @keyframes sphereTurn {
+            from {
+                transform: rotateX(18deg) rotateY(0deg) rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateX(18deg) rotateY(360deg) rotateZ(180deg);
+            }
+        }
+
+        .floating-panel-3d {
+            position: absolute;
+            width: 210px;
+            height: 130px;
+            border-radius: 22px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, .10), rgba(255, 255, 255, .025));
+            border: 1px solid rgba(255, 255, 255, .14);
+            box-shadow: 0 35px 90px rgba(0, 210, 255, .08), inset 0 0 40px rgba(255, 255, 255, .035);
+            transform-style: preserve-3d;
+            animation: panelFloat3d 7s ease-in-out infinite;
+            opacity: .45;
+        }
+
+        .floating-panel-3d::before {
+            content: "";
+            position: absolute;
+            left: 22px;
+            top: 26px;
+            width: 60%;
+            height: 8px;
+            border-radius: 99px;
+            background: rgba(165, 231, 255, .28);
+            box-shadow: 0 24px 0 rgba(237, 177, 255, .18), 0 48px 0 rgba(255, 185, 90, .16);
+            transform: translateZ(30px);
+        }
+
+        @keyframes panelFloat3d {
+
+            0%,
+            100% {
+                transform: rotateY(-22deg) rotateX(12deg) translate3d(0, 0, 0);
+            }
+
+            50% {
+                transform: rotateY(22deg) rotateX(-8deg) translate3d(0, -28px, 70px);
+            }
+        }
+
+        #expertise .section-3d-scene .mini-cube-3d {
+            left: 7%;
+            top: 18%;
+        }
+
+        #expertise .section-3d-scene .wire-sphere-3d {
+            right: 8%;
+            top: 26%;
+        }
+
+        #expertise .section-3d-scene .floating-panel-3d {
+            left: 42%;
+            bottom: 8%;
+            animation-delay: -2s;
+        }
+
+        #work .section-3d-scene .mini-cube-3d {
+            right: 10%;
+            top: 10%;
+            --size: 62px;
+            animation-delay: -1.5s;
+        }
+
+        #work .section-3d-scene .wire-sphere-3d {
+            left: 6%;
+            top: 42%;
+            width: 220px;
+            height: 220px;
+            animation-duration: 14s;
+        }
+
+        #work .section-3d-scene .floating-panel-3d {
+            right: 16%;
+            bottom: 18%;
+            width: 260px;
+            height: 160px;
+        }
+
+        #about .section-3d-scene .mini-cube-3d {
+            left: 49%;
+            top: 12%;
+            --size: 54px;
+        }
+
+        #about .section-3d-scene .wire-sphere-3d {
+            right: 5%;
+            bottom: 12%;
+        }
+
+        #about .section-3d-scene .floating-panel-3d {
+            left: 5%;
+            bottom: 10%;
+            animation-delay: -3s;
+        }
+
+        #contact .section-3d-scene .mini-cube-3d {
+            left: 12%;
+            top: 20%;
+            --size: 60px;
+            animation-delay: -2.8s;
+        }
+
+        #contact .section-3d-scene .wire-sphere-3d {
+            right: 12%;
+            top: 18%;
+            width: 190px;
+            height: 190px;
+        }
+
+        #contact .section-3d-scene .floating-panel-3d {
+            left: 50%;
+            bottom: 12%;
+            transform: translateX(-50%);
+        }
+
+        footer .section-3d-scene .mini-cube-3d {
+            right: 18%;
+            top: 28%;
+            --size: 36px;
+        }
+
+        footer .section-3d-scene .wire-sphere-3d {
+            left: 12%;
+            top: -48px;
+            width: 120px;
+            height: 120px;
+        }
+
+        footer .section-3d-scene .floating-panel-3d {
+            display: none;
+        }
+
+        .skill-card-3d-active {
+            transform-style: preserve-3d;
+            animation: skillCardFloat 6s ease-in-out infinite;
+        }
+
+        .skill-card-3d-active:nth-child(2) {
+            animation-delay: -1.4s;
+        }
+
+        .skill-card-3d-active:nth-child(3) {
+            animation-delay: -2.7s;
+        }
+
+        @keyframes skillCardFloat {
+
+            0%,
+            100% {
+                translate: 0 0;
+                rotate: 0deg;
+            }
+
+            50% {
+                translate: 0 -14px;
+                rotate: .6deg;
+            }
+        }
+
+        .work-card-3d-active::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(120deg, transparent, rgba(165, 231, 255, .16), transparent);
+            transform: translateX(-120%) skewX(-12deg);
+            transition: transform .9s ease;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        .work-card-3d-active:hover::before {
+            transform: translateX(120%) skewX(-12deg);
+        }
+
+        #about .glass-panel {
+            animation: portraitFloat 7s ease-in-out infinite;
+        }
+
+        @keyframes portraitFloat {
+
+            0%,
+            100% {
+                translate: 0 0;
+            }
+
+            50% {
+                translate: 0 -18px;
+            }
+        }
+
+        #contact a.group {
+            transform-style: preserve-3d;
+        }
+
+        #contact a.group:hover .material-symbols-outlined {
+            transform: translateZ(35px) rotateY(18deg) scale(1.18);
+            transition: transform .35s ease;
+        }
+
+        .section-parallax-3d {
+            will-change: transform;
+        }
+
+        @media (max-width: 900px) {
+
+            .cube-3d,
+            .hero-hologram,
+            .orb-3d {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "surface": "#131313",
+                        "on-secondary-fixed-variant": "#6e208c",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-background": "#e5e2e1",
+                        "surface-tint": "#47d6ff",
+                        "surface-container-low": "#1c1b1b",
+                        "tertiary-fixed-dim": "#ffb95a",
+                        "on-primary-fixed-variant": "#004e60",
+                        "outline-variant": "#3c494e",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#353534",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface-variant": "#bbc9cf",
+                        "on-tertiary-fixed": "#2a1800",
+                        "on-primary": "#003543",
+                        "tertiary-container": "#feb246",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-fixed-variant": "#643f00",
+                        "tertiary": "#ffd6a6",
+                        "on-error": "#690005",
+                        "secondary-container": "#6e208c",
+                        "on-tertiary": "#462a00",
+                        "background": "#131313",
+                        "inverse-primary": "#00677f",
+                        "on-secondary": "#520070",
+                        "on-tertiary-container": "#6f4600",
+                        "surface-dim": "#131313",
+                        "surface-container-highest": "#353534",
+                        "secondary-fixed-dim": "#edb1ff",
+                        "tertiary-fixed": "#ffddb6",
+                        "on-secondary-fixed": "#320046",
+                        "on-secondary-container": "#e498ff",
+                        "primary-fixed": "#b6ebff",
+                        "primary": "#a5e7ff",
+                        "primary-container": "#00d2ff",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed-dim": "#47d6ff",
+                        "surface-container": "#201f1f",
+                        "surface-bright": "#393939",
+                        "secondary": "#edb1ff",
+                        "secondary-fixed": "#f9d8ff",
+                        "outline": "#859399",
+                        "on-primary-fixed": "#001f28",
+                        "on-primary-container": "#00566a",
+                        "on-surface": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "margin-tablet": "40px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "headline-lg": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "display-xl": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                        "label-sm": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.2em", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "display-xl": ["96px", { "lineHeight": "100px", "letterSpacing": "-0.04em", "fontWeight": "900" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+
+<style id="responsive-upgrade">
+@media (max-width: 1200px) {
+  .text-display-xl, .font-display-xl { font-size: clamp(64px, 10vw, 120px) !important; }
+  .text-display-lg, .font-display-lg { font-size: clamp(48px, 8vw, 88px) !important; }
+}
+@media (max-width: 1024px) {
+  .grid.md\:grid-cols-12, .grid.md\:grid-cols-3, .grid.md\:grid-cols-2, .grid.md\:grid-cols-5 { grid-template-columns: 1fr !important; }
+  .md\:col-span-8, .md\:col-span-4 { grid-column: span 1 !important; }
+  .md\:h-\[1200px\] { height: auto !important; }
+}
+@media (max-width: 768px) {
+  html, body { overflow-x: hidden !important; }
+  h1, .text-display-xl, .font-display-xl {
+    font-size: clamp(46px, 14vw, 72px) !important;
+    line-height: .95 !important;
+  }
+  h2, .text-display-lg, .font-display-lg {
+    font-size: clamp(34px, 9vw, 52px) !important;
+  }
+  h3 { font-size: clamp(24px, 7vw, 34px) !important; }
+  p { font-size: 15px !important; line-height: 1.7 !important; }
+  .py-32 { padding-top: 72px !important; padding-bottom: 72px !important; }
+  .p-10, .p-8, .p-6 { padding: 20px !important; }
+  .flex-col.md\:flex-row, .md\:flex-row, footer .flex { flex-direction: column !important; }
+  .gap-20, .gap-12, .gap-10, .gap-8 { gap: 24px !important; }
+  .magnetic-btn, .btn { width: 100%; justify-content: center !important; }
+  img { max-width: 100% !important; height: auto !important; }
+}
+@media (max-width: 480px) {
+  h1, .text-display-xl, .font-display-xl { font-size: clamp(38px, 13vw, 56px) !important; }
+  h2, .text-display-lg, .font-display-lg { font-size: clamp(28px, 8vw, 42px) !important; }
+}
+</style>
+
+</head>
+
+<body class="bg-background selection:bg-primary-container selection:text-on-primary-container">
+    <!-- NAVIGATION SHELL -->
+    <header
+        class="fixed top-0 w-full z-50 bg-surface/40 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-secondary/20">
+        <nav class="flex justify-between items-center px-margin-desktop h-20 w-full max-w-container-max mx-auto">
+            <div class="font-display-lg text-[24px] tracking-tighter text-primary bg-clip-text">
+                LAKSHAY TYAGI
+            </div>
+            <div class="hidden md:flex gap-10">
+                <a class="text-on-surface-variant font-medium hover:text-primary hover:glow-sm transition-all duration-300"
+                    href="#expertise">Expertise</a>
+                <a class="text-on-surface-variant font-medium hover:text-primary hover:glow-sm transition-all duration-300"
+                    href="#work">Work</a>
+                <a class="text-on-surface-variant font-medium hover:text-primary hover:glow-sm transition-all duration-300"
+                    href="#about">About</a>
+                <a class="text-on-surface-variant font-medium hover:text-primary hover:glow-sm transition-all duration-300"
+                    href="#contact">Contact</a>
+            </div>
+            <a href="https://wa.me/8813026564" target="_blank"
+                class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-sm scale-105 active:scale-95 transition-transform hover:glow-md">
+                Connect
+            </a>
+        </nav>
+    </header>
+    <main class="bg-mesh min-h-screen">
+        <!-- HERO SECTION -->
+        <section class="relative min-h-screen flex items-center justify-center pt-20 px-margin-mobile md:px-0">
+            <div class="scene-3d parallax-layer" data-depth="0.42">
+                <div class="cube-3d cube-one">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="cube-3d cube-two">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="cube-3d cube-three">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="orb-3d"></div>
+                <div class="orb-3d"></div>
+                <div class="hero-hologram"></div>
+            </div>
+            <!-- Background Decorative Elements -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[120px]">
+                </div>
+                <div
+                    class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[150px]">
+                </div>
+            </div>
+            <div class="hero-orbit"></div>
+            <div class="relative z-10 text-center max-w-4xl">
+                <div class="inline-block px-4 py-1 mb-8 rounded-full border border-primary/30 glass-panel">
+                    <span class="text-primary font-label-caps uppercase tracking-widest">Available for Freelance</span>
+                </div>
+                <h1 class="font-display-xl text-display-lg md:text-display-xl mb-6 leading-tight">
+                    LAKSHAY <span class="text-primary text-glow">TYAGI</span>
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-2xl mx-auto">
+                    Graphic Designer • Website Designer • Figma UI/UX Designer crafting cinematic digital experiences
+                    with mathematical precision.
+                </p>
+                <div class="flex flex-col md:flex-row justify-center gap-6">
+                    <a class="magnetic-btn bg-primary text-on-primary font-label-sm px-10 py-4 rounded-full flex items-center justify-center gap-2 transition-all hover:scale-105 hover:glow-md"
+                        href="#work">
+                        View Portfolio
+                        <span class="material-symbols-outlined"
+                            style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+                    </a>
+                    <a class="magnetic-btn glass-panel text-primary border border-primary/30 font-label-sm px-10 py-4 rounded-full flex items-center justify-center gap-2 transition-all hover:bg-primary/5"
+                        href="#contact">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+            <!-- Floating Mockups Scene (Simulated 3D) -->
+            <div
+                class="absolute bottom-0 w-full max-w-container-max flex justify-around opacity-30 md:opacity-80 pointer-events-none px-margin-desktop h-1/2 items-end pb-20">
+                <div class="hidden md:block transform -rotate-12 translate-y-10">
+                    <img class="w-48 h-64 object-cover rounded-xl border border-white/20 glass-panel shadow-2xl shadow-primary/20"
+                        data-alt="A cinematic 3D rendering of a premium smartphone mockup floating in a dark vacuum. The screen displays a sleek, futuristic mobile application interface with neon blue accents and glassmorphic icons. Soft light reflects off the metallic edges of the phone, and subtle atmospheric dust particles float in the surrounding deep charcoal background."
+                        src="poimages/phone1.png" />
+                </div>
+                <div class="hidden md:block transform rotate-6 -translate-y-20">
+                    <img class="w-80 h-56 object-cover rounded-xl border border-white/20 glass-panel shadow-2xl shadow-secondary/20"
+                        data-alt="A high-end, detailed 3D workspace visualization featuring a sleek silver laptop open on a floating translucent desk. The screen shows a sophisticated Figma design workspace with intricate UI components. The scene is illuminated by cool-toned cinematic lighting with a soft purple glow emanating from the background, creating a high-tech and creative atmosphere."
+                        src="poimages/phone2.png" />
+                </div>
+                <div class="hidden md:block transform -rotate-6 translate-y-5">
+                    <img class="w-56 h-72 object-cover rounded-xl border border-white/20 glass-panel shadow-2xl shadow-primary/20"
+                        data-alt="An abstract graphic design poster displayed in a floating 3D glass frame. The artwork consists of minimalist geometric shapes and fluid gradients in neon blue and deep violet. The scene is set in a dark, atmospheric environment with cinematic volumetric lighting and a sense of infinite depth, emphasizing a futuristic and premium aesthetic."
+                        src="poimages/phone3.png" />
+                </div>
+            </div>
+        </section>
+        <!-- EXPERTISE SECTION -->
+        <section class="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto overflow-hidden"
+            id="expertise">
+            <div class="flex flex-col items-center mb-20 text-center">
+                <span class="font-label-caps text-secondary mb-4">Core Competencies</span>
+                <h2 class="font-headline-lg text-headline-lg md:text-display-lg text-glow">My Expertise</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="group relative p-10 glass-panel rounded-xl hover:scale-[1.02] transition-all duration-500 hover:glow-md">
+                    <div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-8">
+                        <span class="material-symbols-outlined text-primary text-4xl">brush</span>
+                    </div>
+                    <h3 class="font-headline-lg text-[24px] mb-4">Graphic Design</h3>
+                    <p class="font-body-md text-on-surface-variant mb-6 leading-relaxed">
+                        Visual identities and branding strategies that communicate luxury and precision. Specializing in
+                        minimal and corporate aesthetic.
+                    </p>
+                    <ul class="space-y-3 font-label-sm text-primary/80">
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">done</span>
+                            Branding &amp; Identity</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">done</span>
+                            Typography Design</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">done</span>
+                            Social Media Visuals</li>
+                    </ul>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="group relative p-10 glass-panel rounded-xl hover:scale-[1.02] transition-all duration-500 hover:glow-md border-primary/30">
+                    <div class="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center mb-8">
+                        <span class="material-symbols-outlined text-secondary text-4xl">web</span>
+                    </div>
+                    <h3 class="font-headline-lg text-[24px] mb-4">Website Design</h3>
+                    <p class="font-body-md text-on-surface-variant mb-6 leading-relaxed">
+                        High-converting landing pages and portfolio sites with a focus on smooth interactions and
+                        cinematic storytelling.
+                    </p>
+                    <ul class="space-y-3 font-label-sm text-secondary/80">
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">done</span>
+                            Responsive Layouts</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">done</span>
+                            Framer Development</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">done</span>
+                            Performance Optimization</li>
+                    </ul>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="group relative p-10 glass-panel rounded-xl hover:scale-[1.02] transition-all duration-500 hover:glow-md">
+                    <div class="w-16 h-16 rounded-full bg-tertiary/20 flex items-center justify-center mb-8">
+                        <span class="material-symbols-outlined text-tertiary text-4xl">architecture</span>
+                    </div>
+                    <h3 class="font-headline-lg text-[24px] mb-4">UI/UX Design</h3>
+                    <p class="font-body-md text-on-surface-variant mb-6 leading-relaxed">
+                        User-centric design solutions for complex systems, using Figma's advanced components and design
+                        systems.
+                    </p>
+                    <ul class="space-y-3 font-label-sm text-tertiary/80">
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">done</span>
+                            Design Systems</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">done</span>
+                            Interactive Prototyping</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">done</span>
+                            User Research</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- FEATURED WORK SECTION (BENTO GRID) -->
+        <section class="py-32 bg-surface-container-lowest/50" id="work">
+            <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                    <div>
+                        <span class="font-label-caps text-primary mb-4">Selected Works</span>
+                        <h2 class="font-headline-lg text-headline-lg md:text-display-lg">Portfolio <span
+                                class="text-secondary">Highlights</span></h2>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant max-w-md">
+                        A curation of projects where aesthetics meets functionality, ranging from boutique cafes to
+                        futuristic interfaces.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-auto md:h-[1200px]">
+                    <!-- Large Feature Card -->
+                    <div
+                        class="md:col-span-8 group relative overflow-hidden rounded-xl border border-white/10 shadow-2xl">
+                        <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                            data-alt="A highly professional and futuristic data dashboard UI design showcased on a premium glass surface. The interface features intricate data visualizations, glowing neon blue charts, and elegant translucent panels. The scene is rendered with cinematic depth, featuring soft bokeh in the background and a sophisticated dark color palette that emphasizes technical mastery."
+                            src="poimages/coffee cup 2.jpg" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <div class="absolute bottom-0 p-10">
+                            <span class="font-label-caps text-primary">Luxury Branding</span>
+                            <h3 class="font-headline-lg text-[32px] mt-2 mb-4">Coffee House</h3>
+                            <a href="https://www.behance.net/gallery/248618463/Coffee-House" target="_blank"
+                                class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-2 rounded-full flex items-center gap-2 group-hover:bg-primary group-hover:text-black transition-all">
+                                View Case Study <span class="material-symbols-outlined text-sm">north_east</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Side Card Top -->
+                    <div
+                        class="md:col-span-4 group relative overflow-hidden rounded-xl border border-white/10 shadow-2xl">
+                        <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                            data-alt="A chic and modern cafe website design mockup shown on a vertical tablet screen. The design uses elegant serif typography, warm tonal photography of artisanal coffee, and minimalist grid layouts. The tablet is floating against a dark, minimalist studio background with subtle warm highlight lighting that reflects a premium boutique vibe."
+                            src="poimages/logo 2.jpg" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-0 p-8">
+                            <span class="font-label-caps text-secondary">Branding</span>
+                            <h3 class="font-headline-lg text-[20px] mt-2">VELORA-STAY</h3>
+                            <a href="https://www.behance.net/gallery/246133157/VELORA-STAY" target="_blank"
+                                class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-2 rounded-full flex items-center gap-2 group-hover:bg-primary group-hover:text-black transition-all">
+                                View Case Study <span class="material-symbols-outlined text-sm">north_east</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Bento Row 2 -->
+                    <div
+                        class="md:col-span-4 group relative overflow-hidden rounded-xl border border-white/10 shadow-2xl">
+                        <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                            data-alt="A collection of dynamic social media creative designs displayed in a 3D isometric grid. The graphics feature bold typography, high-contrast imagery, and vibrant purple accents. The entire layout feels energized and modern, set against a dark background with cinematic light streaks and glassmorphic overlays."
+                            src="poimages/coding1.png" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-0 p-8">
+                            <span class="font-label-caps text-tertiary">Coding</span>
+                            <h3 class="font-headline-lg text-[20px] mt-2">Website</h3>
+                            <a href="https://lakshaytyagi357-hub.github.io/CoffeeHouse/" target="_blank"
+                                class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-2 rounded-full flex items-center gap-2 group-hover:bg-primary group-hover:text-black transition-all">
+                                View Case Study <span class="material-symbols-outlined text-sm">north_east</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div
+                        class="md:col-span-4 group relative overflow-hidden rounded-xl border border-white/10 shadow-2xl">
+                        <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                            data-alt="A minimalist landing page design for a premium watch brand, featuring a massive high-resolution product shot. The UI includes elegant ghost buttons, microscopic typography, and large whitespace. The overall aesthetic is one of quiet luxury and technical precision, presented in a dark-mode cinematic interface style."
+                            src="poimages/no.png" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-0 p-8">
+                            <span class="font-label-caps text-primary">Noirva</span>
+                            <h3 class="font-headline-lg text-[20px] mt-2">Fashion</h3>
+                            <a href=" https://lakshaytyagi357-hub.github.io/Noirva/" target="_blank"
+                                class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-2 rounded-full flex items-center gap-2 group-hover:bg-primary group-hover:text-black transition-all">
+                                View Case Study <span class="material-symbols-outlined text-sm">north_east</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div
+                        class="md:col-span-4 group relative overflow-hidden rounded-xl border border-white/10 shadow-2xl">
+                        <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                            data-alt="A set of futuristic mobile application UI screens with neon purple and blue glow effects. The design features biometric authentication screens, glassmorphic card layouts, and complex system monitoring graphs. The screens are arranged in a 3D parallax stack floating in a deep dark digital environment."
+                            src="poimages/coffeeapp.png" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-0 p-8">
+                            <span class="font-label-caps text-secondary">UI/UX</span>
+                            <h3 class="font-headline-lg text-[20px] mt-2">Coffee App</h3>
+                            <a href="https://www.figma.com/proto/GU8Ami0TmwwH4xRf3rfFYT/Untitled?node-id=3-7&t=xJ2yfhShq2XCQZv4-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A7&show-proto-sidebar=1"
+                                target="_blank"
+                                class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-2 rounded-full flex items-center gap-2 group-hover:bg-primary group-hover:text-black transition-all">
+                                View Case Study <span class="material-symbols-outlined text-sm">north_east</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ABOUT SECTION -->
+        <section class="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="about">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+                <div class="relative">
+                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-[80px]"></div>
+                    <div
+                        class="relative glass-panel rounded-2xl p-4 rotate-x-12 perspective-1000 transform transition-transform hover:rotate-0 duration-700">
+                        <img class="rounded-xl grayscale hover:grayscale-0 transition-all duration-700 object-cover w-full h-[600px]"
+                            data-alt="A professional and creative portrait of a designer in a high-tech studio environment. The designer is bathed in soft, dual-toned lighting of neon blue and subtle magenta. The background is a sophisticated mix of floating digital screens and abstract 3D geometry, conveying a sense of expertise, innovation, and futuristic vision."
+                            src="poimages/lakshay.png" />
+                    </div>
+                </div>
+                <div>
+                    <span class="font-label-caps text-primary mb-4">Behind the Designs</span>
+                    <h2 class="font-headline-lg text-headline-lg md:text-display-lg mb-8">Architect of <br /><span
+                            class="text-secondary">Digital Realms</span></h2>
+                    <p class="font-body-lg text-on-surface-variant mb-8 leading-relaxed">
+                        I am Lakshay Tyagi, a multidisciplinary designer dedicated to pushing the boundaries of visual
+                        communication. My process combines the raw emotion of graphic design with the logical precision
+                        of UI/UX architecture.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8 mb-12">
+                        <div>
+                            <h4 class="font-label-caps text-secondary mb-2">Design Tools</h4>
+                            <p class="font-body-md">Figma, Photoshop, Illustrator, Indesgin</p>
+                        </div>
+                        <div>
+                            <h4 class="font-label-caps text-primary mb-2">Development</h4>
+                            <p class="font-body-md">Webflow, Framer, CSS, React</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between p-6 glass-panel rounded-xl">
+                            <span class="font-headline-lg text-[24px]">Freelance</span>
+                            <span class="font-label-caps text-on-surface-variant">Experience</span>
+                        </div>
+                        <div class="flex items-center justify-between p-6 glass-panel rounded-xl">
+                            <span class="font-headline-lg text-[24px]">10+</span>
+                            <span class="font-label-caps text-on-surface-variant">Projects Delivered</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CONTACT SECTION -->
+        <section
+            class="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center relative overflow-hidden"
+            id="contact">
+            <div class="absolute inset-0 pointer-events-none">
+                <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px]">
+                </div>
+            </div>
+            <div class="relative z-10">
+                <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-12">Let’s Build Something <span
+                        class="text-primary italic">Creative</span></h2>
+                <p class="font-body-lg text-on-surface-variant mb-16 max-w-xl mx-auto">
+                    Currently accepting new projects. Whether you have a clear vision or just an idea, let's turn it
+                    into a cinematic reality.
+                </p>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a class="group flex items-center gap-4 bg-white/5 backdrop-blur-md border border-white/10 px-8 py-4 rounded-xl hover:bg-primary transition-all duration-500 hover:text-black"
+                        href="mailto:Lakshaytyagi357@gamil.com">
+                        <span class="material-symbols-outlined text-2xl"
+                            style="font-variation-settings: 'FILL' 1;">mail</span>
+                        <div class="text-left">
+                            <p class="font-label-caps opacity-60">Email Me</p>
+                            <p class="font-headline-lg text-[18px]">Lakshaytyagi357@gamil.com</p>
+                        </div>
+                    </a>
+                    <a class="group flex items-center gap-4 bg-white/5 backdrop-blur-md border border-white/10 px-8 py-4 rounded-xl hover:bg-secondary transition-all duration-500 hover:text-black"
+                        href="https://wa.me/8813026564">
+                        <span class="material-symbols-outlined text-2xl"
+                            style="font-variation-settings: 'FILL' 1;">chat</span>
+                        <div class="text-left">
+                            <p class="font-label-caps opacity-60">WhatsApp</p>
+                            <p class="font-headline-lg text-[18px]">+91 8813026564</p>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <!-- FOOTER -->
+    <footer class="w-full py-16 bg-surface-container-lowest border-t border-surface-variant">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center px-margin-desktop gap-gutter max-w-container-max mx-auto">
+            <div class="font-label-caps text-label-caps text-primary">LAKSHAY TYAGI</div>
+            <p class="font-body-md text-body-md text-on-surface-variant opacity-80">© 2026 Lakshay Tyagi. Crafted with
+                cinematic precision.</p>
+            <div class="flex gap-8">
+                <a class="text-on-surface-variant hover:text-primary transition-colors duration-500"
+                    href="https://www.behance.net/lakshaytyagi11" target="_blank">Behance</a>
+
+                <a class="text-on-surface-variant hover:text-primary transition-colors duration-500"
+                    href="mailto:Lakshaytyagi357@gamil.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cursor glow + 3D tilt + scroll reveal animations
+        const root = document.documentElement;
+        window.addEventListener('mousemove', (event) => {
+            root.style.setProperty('--cursor-x', `${event.clientX}px`);
+            root.style.setProperty('--cursor-y', `${event.clientY}px`);
+        });
+
+        const revealTargets = document.querySelectorAll('section, .glass-panel, #work .group');
+        revealTargets.forEach((el) => el.classList.add('reveal-3d'));
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        revealTargets.forEach((el) => revealObserver.observe(el));
+
+        const tiltCards = document.querySelectorAll('.glass-panel, #work .group');
+        tiltCards.forEach((card) => {
+            card.classList.add('tilt-3d');
+            card.addEventListener('mousemove', (event) => {
+                const rect = card.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+                const rotateY = ((x / rect.width) - 0.5) * 12;
+                const rotateX = -((y / rect.height) - 0.5) * 12;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+
+        // Stronger parallax depth for hero 3D objects
+        const parallaxLayers = document.querySelectorAll('.parallax-layer');
+        window.addEventListener('mousemove', (event) => {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            const moveX = (event.clientX - centerX) / centerX;
+            const moveY = (event.clientY - centerY) / centerY;
+            parallaxLayers.forEach((layer) => {
+                const depth = Number(layer.dataset.depth || 0.25);
+                layer.style.transform = `translate3d(${moveX * depth * 80}px, ${moveY * depth * 55}px, 0) rotateY(${moveX * 7}deg) rotateX(${-moveY * 7}deg)`;
+            });
+        });
+
+        // Add layered 3D text depth inside portfolio cards
+        document.querySelectorAll('#work .group span, #work .group h3, #work .group button').forEach((el) => {
+            el.classList.add('portfolio-depth-label');
+        });
+
+        // Magnetic button movement
+        document.querySelectorAll('.magnetic-btn').forEach((button) => {
+            button.addEventListener('mousemove', (event) => {
+                const rect = button.getBoundingClientRect();
+                const x = event.clientX - rect.left - rect.width / 2;
+                const y = event.clientY - rect.top - rect.height / 2;
+                button.style.transform = `translate(${x * 0.12}px, ${y * 0.12}px) translateZ(30px) scale(1.05)`;
+            });
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = '';
+            });
+        });
+
+
+
+        // Add 3D animated objects to every major section, not only hero
+        function cubeMarkup(className = '') {
+            return `<div class="mini-cube-3d section-parallax-3d ${className}" data-depth="0.18"><span></span><span></span><span></span><span></span><span></span><span></span></div>`;
+        }
+
+        ['expertise', 'work', 'about', 'contact'].forEach((id) => {
+            const section = document.getElementById(id);
+            if (!section || section.querySelector('.section-3d-scene')) return;
+            const scene = document.createElement('div');
+            scene.className = 'section-3d-scene';
+            scene.innerHTML = `${cubeMarkup()}<div class="wire-sphere-3d section-parallax-3d" data-depth="0.11"></div><div class="floating-panel-3d section-parallax-3d" data-depth="0.24"></div>`;
+            section.prepend(scene);
+        });
+
+        const footerEl = document.querySelector('footer');
+        if (footerEl && !footerEl.querySelector('.section-3d-scene')) {
+            const footerScene = document.createElement('div');
+            footerScene.className = 'section-3d-scene';
+            footerScene.innerHTML = `${cubeMarkup()}<div class="wire-sphere-3d section-parallax-3d" data-depth="0.10"></div><div class="floating-panel-3d section-parallax-3d" data-depth="0.18"></div>`;
+            footerEl.prepend(footerScene);
+        }
+
+        document.querySelectorAll('#expertise .grid > .glass-panel').forEach((card) => {
+            card.classList.add('skill-card-3d-active');
+        });
+
+        document.querySelectorAll('#work .group').forEach((card) => {
+            card.classList.add('work-card-3d-active');
+        });
+
+        // Full-page parallax for all section 3D objects
+        const sectionParallaxItems = document.querySelectorAll('.section-parallax-3d');
+        window.addEventListener('mousemove', (event) => {
+            const mx = (event.clientX / window.innerWidth - 0.5) * 2;
+            const my = (event.clientY / window.innerHeight - 0.5) * 2;
+            sectionParallaxItems.forEach((item) => {
+                const depth = Number(item.dataset.depth || 0.15);
+                item.style.transform = `translate3d(${mx * depth * 90}px, ${my * depth * 70}px, 0) rotateY(${mx * depth * 45}deg) rotateX(${-my * depth * 35}deg)`;
+            });
+        });
+
+    </script>
+</body>
+
+</html>
